@@ -1,0 +1,24 @@
+C:\Users\furka\source\repos\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe.config
+C:\Users\furka\source\repos\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe.manifest
+C:\Users\furka\source\repos\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.application
+C:\Users\furka\source\repos\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe
+C:\Users\furka\source\repos\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.pdb
+C:\Users\furka\source\repos\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\EntityFramework.dll
+C:\Users\furka\source\repos\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\furka\source\repos\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\EntityFramework.xml
+C:\Users\furka\source\repos\WindowsFormsApp2\WindowsFormsApp2\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\furka\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\Farmasi Stok Takip.csproj.AssemblyReference.cache
+C:\Users\furka\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\Farmasi Stok Takip.csproj.SuggestedBindingRedirects.cache
+C:\Users\furka\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.FGunlukSatis.resources
+C:\Users\furka\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.FKategori.resources
+C:\Users\furka\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.Form1.resources
+C:\Users\furka\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.FSatisYap.resources
+C:\Users\furka\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.FStok.resources
+C:\Users\furka\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.Properties.Resources.resources
+C:\Users\furka\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\Farmasi Stok Takip.csproj.GenerateResource.cache
+C:\Users\furka\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\Farmasi Stok Takip.csproj.CoreCompileInputs.cache
+C:\Users\furka\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.exe.manifest
+C:\Users\furka\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.application
+C:\Users\furka\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\Farmasi Stok Takip.csproj.CopyComplete
+C:\Users\furka\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.exe
+C:\Users\furka\source\repos\WindowsFormsApp2\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.pdb

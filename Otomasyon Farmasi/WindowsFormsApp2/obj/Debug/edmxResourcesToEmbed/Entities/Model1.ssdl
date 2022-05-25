@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBStokTakipModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TKategori">
+    <Key>
+      <PropertyRef Name="KategoriID" />
+    </Key>
+    <Property Name="KategoriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KategoriAd" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="TSatis">
+    <Key>
+      <PropertyRef Name="SatisID" />
+    </Key>
+    <Property Name="SatisID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Urun" Type="varchar" MaxLength="50" />
+    <Property Name="Ucret" Type="decimal" Precision="7" Scale="2" />
+    <Property Name="Adet" Type="int" />
+    <Property Name="Tarih" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="TUrun">
+    <Key>
+      <PropertyRef Name="UrunKodu" />
+    </Key>
+    <Property Name="UrunKodu" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UrunAd" Type="varchar" MaxLength="150" />
+    <Property Name="SatisFiyat" Type="decimal" Precision="7" Scale="2" />
+    <Property Name="AlisFiyat" Type="decimal" Precision="7" Scale="2" />
+    <Property Name="Kategori" Type="int" />
+    <Property Name="Stok" Type="int" />
+  </EntityType>
+  <Association Name="FK_TSatis_TUrun">
+    <End Role="TUrun" Type="Self.TUrun" Multiplicity="0..1" />
+    <End Role="TSatis" Type="Self.TSatis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TUrun">
+        <PropertyRef Name="UrunKodu" />
+      </Principal>
+      <Dependent Role="TSatis">
+        <PropertyRef Name="Urun" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TUrun_TKategori">
+    <End Role="TKategori" Type="Self.TKategori" Multiplicity="0..1" />
+    <End Role="TUrun" Type="Self.TUrun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TKategori">
+        <PropertyRef Name="KategoriID" />
+      </Principal>
+      <Dependent Role="TUrun">
+        <PropertyRef Name="Kategori" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="AylikSatis" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="BuAyCiro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="BugunCiro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GunlukSatis" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="YillikSatis" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="DBStokTakipModelStoreContainer">
+    <EntitySet Name="TKategori" EntityType="Self.TKategori" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TSatis" EntityType="Self.TSatis" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TUrun" EntityType="Self.TUrun" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_TSatis_TUrun" Association="Self.FK_TSatis_TUrun">
+      <End Role="TUrun" EntitySet="TUrun" />
+      <End Role="TSatis" EntitySet="TSatis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TUrun_TKategori" Association="Self.FK_TUrun_TKategori">
+      <End Role="TKategori" EntitySet="TKategori" />
+      <End Role="TUrun" EntitySet="TUrun" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

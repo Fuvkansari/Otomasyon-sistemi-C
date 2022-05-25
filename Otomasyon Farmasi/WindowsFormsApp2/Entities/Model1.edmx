@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBStokTakipModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TKategori">
+          <Key>
+            <PropertyRef Name="KategoriID" />
+          </Key>
+          <Property Name="KategoriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KategoriAd" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="TSatis">
+          <Key>
+            <PropertyRef Name="SatisID" />
+          </Key>
+          <Property Name="SatisID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Urun" Type="varchar" MaxLength="50" />
+          <Property Name="Ucret" Type="decimal" Precision="7" Scale="2" />
+          <Property Name="Adet" Type="int" />
+          <Property Name="Tarih" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="TUrun">
+          <Key>
+            <PropertyRef Name="UrunKodu" />
+          </Key>
+          <Property Name="UrunKodu" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UrunAd" Type="varchar" MaxLength="150" />
+          <Property Name="SatisFiyat" Type="decimal" Precision="7" Scale="2" />
+          <Property Name="AlisFiyat" Type="decimal" Precision="7" Scale="2" />
+          <Property Name="Kategori" Type="int" />
+          <Property Name="Stok" Type="int" />
+        </EntityType>
+        <Association Name="FK_TSatis_TUrun">
+          <End Role="TUrun" Type="Self.TUrun" Multiplicity="0..1" />
+          <End Role="TSatis" Type="Self.TSatis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TUrun">
+              <PropertyRef Name="UrunKodu" />
+            </Principal>
+            <Dependent Role="TSatis">
+              <PropertyRef Name="Urun" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TUrun_TKategori">
+          <End Role="TKategori" Type="Self.TKategori" Multiplicity="0..1" />
+          <End Role="TUrun" Type="Self.TUrun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TKategori">
+              <PropertyRef Name="KategoriID" />
+            </Principal>
+            <Dependent Role="TUrun">
+              <PropertyRef Name="Kategori" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="AylikSatis" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="BuAyCiro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="BugunCiro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GunlukSatis" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="YillikSatis" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="DBStokTakipModelStoreContainer">
+          <EntitySet Name="TKategori" EntityType="Self.TKategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TSatis" EntityType="Self.TSatis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TUrun" EntityType="Self.TUrun" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TSatis_TUrun" Association="Self.FK_TSatis_TUrun">
+            <End Role="TUrun" EntitySet="TUrun" />
+            <End Role="TSatis" EntitySet="TSatis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TUrun_TKategori" Association="Self.FK_TUrun_TKategori">
+            <End Role="TKategori" EntitySet="TKategori" />
+            <End Role="TUrun" EntitySet="TUrun" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBStokTakipModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TKategori">
+          <Key>
+            <PropertyRef Name="KategoriID" />
+          </Key>
+          <Property Name="KategoriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KategoriAd" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TUrun" Relationship="Self.FK_TUrun_TKategori" FromRole="TKategori" ToRole="TUrun" />
+        </EntityType>
+        <EntityType Name="TUrun">
+          <Key>
+            <PropertyRef Name="UrunKodu" />
+          </Key>
+          <Property Name="UrunKodu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UrunAd" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="SatisFiyat" Type="Decimal" Precision="7" Scale="2" />
+          <Property Name="Kategori" Type="Int32" />
+          <NavigationProperty Name="TKategori" Relationship="Self.FK_TUrun_TKategori" FromRole="TUrun" ToRole="TKategori" />
+          <NavigationProperty Name="TSatis" Relationship="DBStokTakipModel.FK_TSatis_TUrun" FromRole="TUrun" ToRole="TSatis" />
+          <Property Name="Stok" Type="Int32" />
+          <Property Name="AlisFiyat" Type="Decimal" Precision="7" Scale="2" />
+        </EntityType>
+        <Association Name="FK_TUrun_TKategori">
+          <End Role="TKategori" Type="Self.TKategori" Multiplicity="0..1" />
+          <End Role="TUrun" Type="Self.TUrun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TKategori">
+              <PropertyRef Name="KategoriID" />
+            </Principal>
+            <Dependent Role="TUrun">
+              <PropertyRef Name="Kategori" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBStokTakipEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TKategori" EntityType="Self.TKategori" />
+          <EntitySet Name="TUrun" EntityType="Self.TUrun" />
+          <AssociationSet Name="FK_TUrun_TKategori" Association="Self.FK_TUrun_TKategori">
+            <End Role="TKategori" EntitySet="TKategori" />
+            <End Role="TUrun" EntitySet="TUrun" />
+          </AssociationSet>
+          <EntitySet Name="TSatis" EntityType="DBStokTakipModel.TSatis" />
+          <AssociationSet Name="FK_TSatis_TUrun" Association="DBStokTakipModel.FK_TSatis_TUrun">
+            <End Role="TUrun" EntitySet="TUrun" />
+            <End Role="TSatis" EntitySet="TSatis" />
+          </AssociationSet>
+          <FunctionImport Name="AylikSatis" ReturnType="Collection(DBStokTakipModel.AylikSatis_Result)" />
+          <FunctionImport Name="GunlukSatis" ReturnType="Collection(DBStokTakipModel.GunlukSatis_Result)" />
+          <FunctionImport Name="YillikSatis" ReturnType="Collection(DBStokTakipModel.YillikSatis_Result)" />
+          <FunctionImport Name="BuAyCiro" ReturnType="Collection(Decimal)" />
+          <FunctionImport Name="BugunCiro" ReturnType="Collection(Decimal)" />
+        </EntityContainer>
+        <EntityType Name="TSatis">
+          <Key>
+            <PropertyRef Name="SatisID" />
+          </Key>
+          <Property Name="SatisID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Urun" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ucret" Type="Decimal" Precision="7" Scale="2" />
+          <Property Name="Adet" Type="Int32" />
+          <Property Name="Tarih" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="TUrun" Relationship="DBStokTakipModel.FK_TSatis_TUrun" FromRole="TSatis" ToRole="TUrun" />
+        </EntityType>
+        <Association Name="FK_TSatis_TUrun">
+          <End Type="DBStokTakipModel.TUrun" Role="TUrun" Multiplicity="0..1" />
+          <End Type="DBStokTakipModel.TSatis" Role="TSatis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TUrun">
+              <PropertyRef Name="UrunKodu" />
+            </Principal>
+            <Dependent Role="TSatis">
+              <PropertyRef Name="Urun" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="AylikSatis_Result">
+          <Property Type="Int32" Name="SatisID" Nullable="false" />
+          <Property Type="String" Name="Urun" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Ucret" Nullable="true" Precision="7" Scale="2" />
+          <Property Type="Int32" Name="Adet" Nullable="true" />
+          <Property Type="DateTime" Name="Tarih" Nullable="true" Precision="16" />
+        </ComplexType>
+        <ComplexType Name="GunlukSatis_Result">
+          <Property Type="Int32" Name="SatisID" Nullable="false" />
+          <Property Type="String" Name="Urun" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Ucret" Nullable="true" Precision="7" Scale="2" />
+          <Property Type="Int32" Name="Adet" Nullable="true" />
+          <Property Type="DateTime" Name="Tarih" Nullable="true" Precision="16" />
+        </ComplexType>
+        <ComplexType Name="YillikSatis_Result">
+          <Property Type="Int32" Name="SatisID" Nullable="false" />
+          <Property Type="String" Name="Urun" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Ucret" Nullable="true" Precision="7" Scale="2" />
+          <Property Type="Int32" Name="Adet" Nullable="true" />
+          <Property Type="DateTime" Name="Tarih" Nullable="true" Precision="16" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBStokTakipModelStoreContainer" CdmEntityContainer="DBStokTakipEntities">
+          <EntitySetMapping Name="TKategori">
+            <EntityTypeMapping TypeName="DBStokTakipModel.TKategori">
+              <MappingFragment StoreEntitySet="TKategori">
+                <ScalarProperty Name="KategoriID" ColumnName="KategoriID" />
+                <ScalarProperty Name="KategoriAd" ColumnName="KategoriAd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TUrun">
+            <EntityTypeMapping TypeName="DBStokTakipModel.TUrun">
+              <MappingFragment StoreEntitySet="TUrun">
+                <ScalarProperty Name="AlisFiyat" ColumnName="AlisFiyat" />
+                <ScalarProperty Name="Stok" ColumnName="Stok" />
+                <ScalarProperty Name="UrunKodu" ColumnName="UrunKodu" />
+                <ScalarProperty Name="UrunAd" ColumnName="UrunAd" />
+                <ScalarProperty Name="SatisFiyat" ColumnName="SatisFiyat" />
+                <ScalarProperty Name="Kategori" ColumnName="Kategori" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TSatis">
+            <EntityTypeMapping TypeName="DBStokTakipModel.TSatis">
+              <MappingFragment StoreEntitySet="TSatis">
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Adet" ColumnName="Adet" />
+                <ScalarProperty Name="Ucret" ColumnName="Ucret" />
+                <ScalarProperty Name="Urun" ColumnName="Urun" />
+                <ScalarProperty Name="SatisID" ColumnName="SatisID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AylikSatis" FunctionName="DBStokTakipModel.Store.AylikSatis">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBStokTakipModel.AylikSatis_Result">
+                <ScalarProperty Name="SatisID" ColumnName="SatisID" />
+                <ScalarProperty Name="Urun" ColumnName="Urun" />
+                <ScalarProperty Name="Ucret" ColumnName="Ucret" />
+                <ScalarProperty Name="Adet" ColumnName="Adet" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GunlukSatis" FunctionName="DBStokTakipModel.Store.GunlukSatis">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBStokTakipModel.GunlukSatis_Result">
+                <ScalarProperty Name="SatisID" ColumnName="SatisID" />
+                <ScalarProperty Name="Urun" ColumnName="Urun" />
+                <ScalarProperty Name="Ucret" ColumnName="Ucret" />
+                <ScalarProperty Name="Adet" ColumnName="Adet" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="YillikSatis" FunctionName="DBStokTakipModel.Store.YillikSatis">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DBStokTakipModel.YillikSatis_Result">
+                <ScalarProperty Name="SatisID" ColumnName="SatisID" />
+                <ScalarProperty Name="Urun" ColumnName="Urun" />
+                <ScalarProperty Name="Ucret" ColumnName="Ucret" />
+                <ScalarProperty Name="Adet" ColumnName="Adet" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="BuAyCiro" FunctionName="DBStokTakipModel.Store.BuAyCiro" />
+          <FunctionImportMapping FunctionImportName="BugunCiro" FunctionName="DBStokTakipModel.Store.BugunCiro" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

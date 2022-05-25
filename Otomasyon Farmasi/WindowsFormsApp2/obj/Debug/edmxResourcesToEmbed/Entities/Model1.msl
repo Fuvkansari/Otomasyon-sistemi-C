@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBStokTakipModelStoreContainer" CdmEntityContainer="DBStokTakipEntities">
+    <EntitySetMapping Name="TKategori">
+      <EntityTypeMapping TypeName="DBStokTakipModel.TKategori">
+        <MappingFragment StoreEntitySet="TKategori">
+          <ScalarProperty Name="KategoriID" ColumnName="KategoriID" />
+          <ScalarProperty Name="KategoriAd" ColumnName="KategoriAd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TUrun">
+      <EntityTypeMapping TypeName="DBStokTakipModel.TUrun">
+        <MappingFragment StoreEntitySet="TUrun">
+          <ScalarProperty Name="AlisFiyat" ColumnName="AlisFiyat" />
+          <ScalarProperty Name="Stok" ColumnName="Stok" />
+          <ScalarProperty Name="UrunKodu" ColumnName="UrunKodu" />
+          <ScalarProperty Name="UrunAd" ColumnName="UrunAd" />
+          <ScalarProperty Name="SatisFiyat" ColumnName="SatisFiyat" />
+          <ScalarProperty Name="Kategori" ColumnName="Kategori" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TSatis">
+      <EntityTypeMapping TypeName="DBStokTakipModel.TSatis">
+        <MappingFragment StoreEntitySet="TSatis">
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+          <ScalarProperty Name="Adet" ColumnName="Adet" />
+          <ScalarProperty Name="Ucret" ColumnName="Ucret" />
+          <ScalarProperty Name="Urun" ColumnName="Urun" />
+          <ScalarProperty Name="SatisID" ColumnName="SatisID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="AylikSatis" FunctionName="DBStokTakipModel.Store.AylikSatis">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBStokTakipModel.AylikSatis_Result">
+          <ScalarProperty Name="SatisID" ColumnName="SatisID" />
+          <ScalarProperty Name="Urun" ColumnName="Urun" />
+          <ScalarProperty Name="Ucret" ColumnName="Ucret" />
+          <ScalarProperty Name="Adet" ColumnName="Adet" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GunlukSatis" FunctionName="DBStokTakipModel.Store.GunlukSatis">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBStokTakipModel.GunlukSatis_Result">
+          <ScalarProperty Name="SatisID" ColumnName="SatisID" />
+          <ScalarProperty Name="Urun" ColumnName="Urun" />
+          <ScalarProperty Name="Ucret" ColumnName="Ucret" />
+          <ScalarProperty Name="Adet" ColumnName="Adet" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="YillikSatis" FunctionName="DBStokTakipModel.Store.YillikSatis">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DBStokTakipModel.YillikSatis_Result">
+          <ScalarProperty Name="SatisID" ColumnName="SatisID" />
+          <ScalarProperty Name="Urun" ColumnName="Urun" />
+          <ScalarProperty Name="Ucret" ColumnName="Ucret" />
+          <ScalarProperty Name="Adet" ColumnName="Adet" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="BuAyCiro" FunctionName="DBStokTakipModel.Store.BuAyCiro" />
+    <FunctionImportMapping FunctionImportName="BugunCiro" FunctionName="DBStokTakipModel.Store.BugunCiro" />
+  </EntityContainerMapping>
+</Mapping>
